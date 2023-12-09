@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-var cors = require('cors');
+const cors = require('cors');
 
 
 
@@ -29,6 +29,7 @@ mongoose.connect(process.env.DATABASE, {
     .catch((err) => console.log("DB connection error:", err));
 
 //MIDDLEWARE
+app.use(cors()); 
 app.use(morgan('dev'));
 app.use(bodyParser.json({ limit: "5mb" }));
 app.use(bodyParser.urlencoded({
